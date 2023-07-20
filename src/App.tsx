@@ -31,16 +31,24 @@ function App() {
       //})
   }
 
+  const removeTodo = (id: number) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id)) 
+  };
+
   return (
     <div className="container">
       <TodoForm addTodo={addTodo} />
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}> {todo.content} </li>
+          <li onClick={() => removeTodo(todo.id)} key={todo.id}> 
+          {todo.content} 
+          </li>
         ))}
       </ul>
     </div>
   );
 }
+
+
 
 export default App
